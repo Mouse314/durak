@@ -1,0 +1,161 @@
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(228, 100%, 50%) #000000;
+  scroll-behavior:auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+html {
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: aliceblue;
+  padding: 20px;
+  border: 5px solid blue;
+  border-radius: 40px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px blue;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+input {
+  background-color: rgb(0, 0, 0);
+  color: aliceblue;
+  font-size: 28px;
+  border: 2px solid blue;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 10px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  gap: 20px;
+  height: 100vh;
+  width: 50vw;
+}
+
+.name-block {
+  margin-top: 30px;
+  padding: 10px;
+  padding-bottom: 20px;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid blue;
+  border-radius: 40px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px blue;
+}
+
+.rooms {
+  flex: 1 1 auto;
+  border: 5px solid blue;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 30px;
+  overflow: auto;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px blue;
+}
+
+.rooms-title {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rooms-container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+  margin-bottom: 30px;
+}
+
+.room {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  overflow: hidden;
+  border: 2px solid blue;
+  background-color: #050023;
+  border-radius: 20px;
+  height: 100px;
+  min-height: 100px;
+}
+.room:hover {
+  cursor: pointer;
+  background-color: darkblue;
+}
+
+.title-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  color: aliceblue;
+  font-size: 24px;
+  margin: 10px;
+  padding: 10px;
+  padding-bottom: 15px;
+  background-color: black;
+  border: 1px solid blue;
+  border-radius: 50vw;
+}
+button:hover {
+  cursor: pointer;
+  background-color: blue;
+  box-shadow: 0 0 30px blue;
+}
+button:active {
+  background-color: purple;
+}
+
+button.cancel {
+  position: relative;
+  padding: 10px 20px;
+  border-color: red;
+  border-radius: 10px;
+}
+button.cancel:hover {
+  border-color: darkred;
+  background-color: red;
+  box-shadow: 0 0 30px red;
+}
