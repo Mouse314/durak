@@ -22,6 +22,6 @@ export default class Card {
     }
 
     public getImage(): string {
-        return `/cards/52cards/${this.textureName}`;
+        return `./cards/52cards/${this.textureName}`;
     }
 }

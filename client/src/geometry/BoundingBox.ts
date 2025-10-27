@@ -44,7 +44,6 @@ export default class BoundingBox {
             const topRight = new THREE.Vector2(ortho.right, ortho.top);
             const bottomLeft = new THREE.Vector2(ortho.left, ortho.bottom);
             const bottomRight = new THREE.Vector2(ortho.right, ortho.bottom);
-            console.log(topLeft, topRight, bottomLeft, bottomRight);
             return new BoundingBox(topLeft, topRight, bottomLeft, bottomRight);
         } else if ((camera as any).isPerspectiveCamera) {
             // Для перспективной камеры — пересечение лучей с плоскостью z

@@ -28,19 +28,19 @@ export default function Background() {
         // Texture
 
         const textureLoader = new THREE.TextureLoader();
-        const textureSpades = textureLoader.load('/suits/spade.png', (tex) => {
+        const textureSpades = textureLoader.load('./suits/spade.png', (tex) => {
             if ('colorSpace' in tex) (tex as any).colorSpace = 'srgb';
             else if ('encoding' in tex) (tex as any).encoding = (THREE as any).sRGBEncoding;
         });
-        const textureClubs = textureLoader.load('/suits/clubs.png', (tex) => {
+        const textureClubs = textureLoader.load('./suits/clubs.png', (tex) => {
             if ('colorSpace' in tex) (tex as any).colorSpace = 'srgb';
             else if ('encoding' in tex) (tex as any).encoding = (THREE as any).sRGBEncoding;
         });
-        const textureHearts = textureLoader.load('/suits/hearts.png', (tex) => {
+        const textureHearts = textureLoader.load('./suits/hearts.png', (tex) => {
             if ('colorSpace' in tex) (tex as any).colorSpace = 'srgb';
             else if ('encoding' in tex) (tex as any).encoding = (THREE as any).sRGBEncoding;
         });
-        const textureDiamonds = textureLoader.load('/suits/diamonds.png', (tex) => {
+        const textureDiamonds = textureLoader.load('./suits/diamonds.png', (tex) => {
             if ('colorSpace' in tex) (tex as any).colorSpace = 'srgb';
             else if ('encoding' in tex) (tex as any).encoding = (THREE as any).sRGBEncoding;
         });
