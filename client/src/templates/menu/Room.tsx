@@ -1,8 +1,17 @@
 import type Room from "../../objects/Room";
 
-export default function RoomComponent({ room }: { room: Room }) {
+type RoomPropsTypes = {
+    room: Room;
+    handleInGame: () => void;
+};
+
+export default function RoomComponent({ room, handleInGame }: RoomPropsTypes) {
     return (
-        <div className="room">
+        <div className="room" onClick={() => {
+            if (room.players.length < room.capacity) {
+                handleInGame();
+            }
+        }}>
             <div className="left">
                 <h3>{room.name}</h3>
                 <p>Вместимость: {room.capacity}</p>

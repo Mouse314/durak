@@ -14,19 +14,20 @@ export default function Background() {
         camera.position.z = 5;
 
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(mount.clientWidth, mount.clientHeight);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(mount.clientWidth, mount.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
         // Гамма-коррекция для рендера (современный three.js)
         if ('colorSpace' in renderer) {
             (renderer as any).colorSpace = 'srgb';
         } else if ('outputEncoding' in renderer) {
             (renderer as any).outputEncoding = (THREE as any).sRGBEncoding;
         }
-    mount.appendChild(renderer.domElement);
+        mount.appendChild(renderer.domElement);
 
         // Texture
 
-    const textureLoader = new THREE.TextureLoader();
+        const textureLoader = new THREE.TextureLoader();
         const textureSpades = textureLoader.load('/suits/spade.png', (tex) => {
             if ('colorSpace' in tex) (tex as any).colorSpace = 'srgb';
             else if ('encoding' in tex) (tex as any).encoding = (THREE as any).sRGBEncoding;
@@ -66,14 +67,14 @@ export default function Background() {
             scene.add(points);
             pointsGroups.push(points);
         }
-        
+
 
         // Animation (вращаем все группы)
         let frameId: number | null = null;
         const animate = () => {
             for (const points of pointsGroups) {
-                points.rotation.x += 0.0005;
-                points.rotation.y += 0.0005;
+                points.rotation.x += 0.0002;
+                points.rotation.y += 0.0002;
             }
             renderer.render(scene, camera);
             frameId = requestAnimationFrame(animate);
@@ -86,7 +87,8 @@ export default function Background() {
             if (!current) return;
             camera.aspect = current.clientWidth / current.clientHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(current.clientWidth, current.clientHeight);
+            renderer.setSize(current.clientWidth, current.clientHeight, false);
+            renderer.setPixelRatio(window.devicePixelRatio);
         };
         window.addEventListener('resize', handleResize);
 
