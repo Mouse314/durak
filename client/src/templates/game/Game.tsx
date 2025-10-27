@@ -64,13 +64,13 @@ export default function Game() {
         player.createHand(mockCards.map(card => new CardModel(card, true, false)));
         player.placeOnScene();
 
-        addEventListener('mousemove', (event) => player.handleMouseMove(getNDC(event.clientX, event.clientY), camera, mount));
-        addEventListener('mousedown', (event) => player.handleMouseDown(getNDC(event.clientX, event.clientY), camera, mount));
-        addEventListener('mouseup', (event) => player.handleMouseUp(getNDC(event.clientX, event.clientY), camera, mount));
+        addEventListener('mousemove', (event) => player.handleMouseMove(getNDC(event.clientX, event.clientY), camera));
+        addEventListener('mousedown', (event) => player.handleMouseDown(getNDC(event.clientX, event.clientY), camera));
+        addEventListener('mouseup', () => player.handleMouseUp());
 
-        addEventListener('touchstart', (event) => player.handleMouseDown(getNDC(event.touches[0].clientX, event.touches[0].clientY), camera, mount));
-        addEventListener('touchmove', (event) => player.handleMouseMove(getNDC(event.touches[0].clientX, event.touches[0].clientY), camera, mount));
-        addEventListener('touchend', (event) => player.handleMouseUp(getNDC(event.changedTouches[0].clientX, event.changedTouches[0].clientY), camera, mount));
+        addEventListener('touchstart', (event) => player.handleMouseDown(getNDC(event.touches[0].clientX, event.touches[0].clientY), camera));
+        addEventListener('touchmove', (event) => player.handleMouseMove(getNDC(event.touches[0].clientX, event.touches[0].clientY), camera));
+        addEventListener('touchend', () => player.handleMouseUp());
 
         // Гамма-коррекция для рендера (современный three.js)
         if ('colorSpace' in renderer) {

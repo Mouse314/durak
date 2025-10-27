@@ -70,7 +70,7 @@ export default class Player {
         }
     }
 
-    public handleMouseMove(mousePos: { x: number, y: number }, camera: THREE.Camera, domElement: HTMLElement): void {
+    public handleMouseMove(mousePos: { x: number, y: number }, camera: THREE.Camera): void {
         const mouseWorld = this.getMouseWorld(mousePos);
 
         if (this.mouseClicked) {
@@ -107,12 +107,12 @@ export default class Player {
         }
     }
 
-    public handleMouseDown(mousePos: { x: number, y: number }, camera: THREE.Camera, domElement: HTMLElement): void {
+    public handleMouseDown(mousePos: { x: number, y: number }, camera: THREE.Camera): void {
         this.mouseClicked = true;
-        const mouseWorld = this.getMouseWorld(mousePos);
+        // const mouseWorld = this.getMouseWorld(mousePos);
         this.intersectCards(new THREE.Vector2(mousePos.x, mousePos.y), camera);
     }
-    public handleMouseUp(mousePos: { x: number, y: number }, camera: THREE.Camera, domElement: HTMLElement): void {
+    public handleMouseUp(): void {
         this.mouseClicked = false;
         this.selectedCard = null;
     }

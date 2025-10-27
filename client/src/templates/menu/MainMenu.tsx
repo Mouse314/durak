@@ -2,10 +2,9 @@ import { useState } from "react";
 import Room from "../../objects/Room";
 import RoomComponent from "./Room";
 import NewRoom from "./NewRoom";
-import Game from "../game/Game";
 import GameUI from "../game/GameUI";
 
-export default function MainMenu({ username }: { username: string }) {
+export default function MainMenu() {
     const [rooms, setRooms] = useState<Room[]>([new Room("Тестовая комната", 2)]);
     const [creatingNewRoom, setCreatingNewRoom] = useState(false);
     const [inGame, setInGame] = useState(false);

@@ -25,7 +25,7 @@ export default function App() {
   return (
     <>
       <Background />
-      {isAuth ? <MainMenu username={username} /> : <Login onLogin={handleLogin} />}
+      {isAuth ? <MainMenu/> : <Login onLogin={handleLogin} />}
     </>
   );
 }
