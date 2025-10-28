@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { useEffect, useRef } from "react";
 import Player from '../../objects/Player';
+import Enemy from '../../objects/Enemy';
 import CardModel from './CardModel';
 import Card from '../../objects/cards/Card';
 import BoundingBox from '../../geometry/BoundingBox';
@@ -35,7 +36,7 @@ export default function Game() {
             0.1,
             1000
         );
-        
+
         console.log(window.devicePixelRatio);
         camera.position.z = 5;
         // camera.lookAt(new THREE.Vector3(0, 0, 0));
@@ -49,6 +50,8 @@ export default function Game() {
         const corners = BoundingBox.getFromTHREE(camera, 1);
 
         const player = new Player(gameController, corners);
+        // Враг (сверху)
+        const enemy = new Enemy('right', corners);
         const mockCards = [
             new Card('jack', 'hearts'),
             new Card('queen', 'diamonds'),
@@ -63,6 +66,10 @@ export default function Game() {
         ];
         player.createHand(mockCards.map(card => new CardModel(card, true, false)));
         player.placeOnScene();
+
+        // Вражеские карты (пример: 6 карт)
+        const enemyMockCards = mockCards.slice(0, 6).map(card => new CardModel(card, true, false));
+        enemy.createHand(enemyMockCards);
 
         addEventListener('mousemove', (event) => player.handleMouseMove(getNDC(event.clientX, event.clientY), camera));
         addEventListener('mousedown', (event) => player.handleMouseDown(getNDC(event.clientX, event.clientY), camera));
@@ -81,7 +88,13 @@ export default function Game() {
         mount.appendChild(renderer.domElement);
 
         // Player Cards
+        // Карты игрока
         player.getHand().forEach(async cardModel => {
+            await cardModel.formTHREEMesh();
+            scene.add(cardModel.THREEMesh);
+        });
+        // Карты врага
+        enemy.getHand().forEach(async cardModel => {
             await cardModel.formTHREEMesh();
             scene.add(cardModel.THREEMesh);
         });
@@ -90,6 +103,7 @@ export default function Game() {
         let frameId: number | null = null;
         const animate = () => {
             player.placeOnScene();
+            enemy.placeOnScene();
             renderer.render(scene, camera);
             frameId = requestAnimationFrame(animate);
         };

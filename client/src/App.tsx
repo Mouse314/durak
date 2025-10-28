@@ -2,6 +2,9 @@ import React from 'react';
 import MainMenu from './templates/menu/MainMenu';
 import Login from './templates/menu/Login';
 import Background from './templates/menu/Background';
+import WSClient from './communication/WSClient';
+
+const wsClient = new WSClient('ws://localhost:8080');
 
 export default function App() {
   const [isAuth, setIsAuth] = React.useState(() => {
@@ -25,7 +28,7 @@ export default function App() {
   return (
     <>
       <Background />
-      {isAuth ? <MainMenu/> : <Login onLogin={handleLogin} />}
+      {isAuth ? <MainMenu nickname={username} ws={wsClient} /> : <Login onLogin={handleLogin} />}
     </>
   );
 }

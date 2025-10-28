@@ -24,7 +24,7 @@ export default class CardModel {
 
     public async formTHREEMesh(): Promise<void> {
         const textureLoader = new THREE.TextureLoader();
-        const texture = await textureLoader.loadAsync(!this.isHide ? this.card.getImage() : '/cards/card_back.png');
+        const texture = await textureLoader.loadAsync(!this.isHide ? this.card.getImage() : './cards/card_back.png');
 
         if ('colorSpace' in texture) (texture as any).colorSpace = 'srgb';
         else if ('encoding' in texture) (texture as any).encoding = (THREE as any).sRGBEncoding;

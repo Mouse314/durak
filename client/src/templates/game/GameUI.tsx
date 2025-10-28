@@ -5,6 +5,7 @@ type GameUIPropsTypes = {
 };
 
 export default function GameUI({ handleBack }: GameUIPropsTypes) {
+
     return (
         <div className="game-ui">
             <Game />

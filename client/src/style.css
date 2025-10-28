@@ -108,6 +108,7 @@ input {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
+  text-align: center;
   justify-content: center;
   border: 5px solid blue;
   border-radius: 40px;
